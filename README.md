@@ -1,13 +1,13 @@
 # Impact-of-age-on-immune-response-dynamics-upon-pathogen-exposure
 
-### 1️⃣ Step 1: Build Pseudobulk Data
+### Step 1: Build Pseudobulk Data
 **Script:** `Age-DEA/pseudobulk_dreamlet.R`
 
 This script uses the `dreamlet::aggregateToPseudobulk()` function to aggregate single-cell data into pseudobulk samples, then processAssays() filters genes based on criteria such as minimum counts and minimum number of donors.
 
 It saves two files:
-- `output/pb.rds`: the resulting `SummarizedExperiment` pseudobulk object.
-- `output/dea_toptable.rds`: a filtered gene table used for downstream differential expression analysis.
+- `output/pb.rds`: the resulting pseudobulk object.
+- `output/dea_toptable.rds`: a filtered toptable used for downstream differential expression analysis.
 
 📌 Example usage inside the script:
 ```r
@@ -21,8 +21,10 @@ system.time(pb <- aggregateToPseudoBulk(sce,
                                         fun = opt$aggr_fun,
                                         verbose = FALSE))
 # Filter genes by counts and donor number
-pb_filtered <- processAssays(sce_obj, min.count=5, min.samples=4)
+  system.time(res.proc <- processAssays(sceObj = ge_dge, 
+                                        formula = form,
+                                        min.cells = 5,
+                                        min.count = 5,
+                                        min.samples = 4,
+                                        min.prop=opt$min_prop))
 
-# Outputs:
-- dea_toptable.rds
-- pb.Rds
