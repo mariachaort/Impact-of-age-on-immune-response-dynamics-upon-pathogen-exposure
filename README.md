@@ -1,4 +1,21 @@
 # Impact-of-age-on-immune-response-dynamics-upon-pathogen-exposure
+### Cell Type Composition Changes - Figures
+
+This script generates figures showing how cell type composition varies across different stimulation conditions, time points, and chemistries.
+
+- **Input:** Preprocessed metadata and cell composition `.rds` files.
+- **Workflow:**  
+  1. Loads metadata to order cell types for plotting.  
+  2. Defines experimental parameters and filters valid condition combinations.  
+  3. Reads cell composition data for each condition, combining into one dataset.  
+  4. Uses `ggplot2` to create faceted plots highlighting significant composition changes (p < 0.05).  
+  5. Saves plots as PDFs.
+
+- **Packages:** `ggplot2`, `dplyr`, `RColorBrewer`, `ggpubr`, `ggrepel`, and others.
+
+---
+
+
 
 ### Step 1: Build Pseudobulk Data
 **Script:** `Age-DEA/pseudobulk_dreamlet.R`
