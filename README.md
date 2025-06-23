@@ -4,7 +4,7 @@ effective, tailored therapeutic and vaccination strategies.
 
 ### Cell Type Composition Changes - Figures
 
-This script generates figures showing how cell type composition varies across different stimulation conditions, time points, and chemistries.
+This script generates figures showing how cell type composition varies across different stimulation conditions ans timepoints. 
 
 **Input:** Preprocessed metadata and cell composition `.rds` files.
 
@@ -19,7 +19,7 @@ This script generates figures showing how cell type composition varies across di
 ### Step 1: Build Pseudobulk Data
 **Script:** `Age-DEA/pseudobulk_dreamlet.R`
 
-This script uses the `dreamlet::aggregateToPseudobulk()` function to aggregate single-cell data into pseudobulk samples, then processAssays() filters genes based on criteria such as minimum counts and minimum number of donors.
+This script uses the `dreamlet::aggregateToPseudobulk()` function to aggregate single-cell data into pseudobulk samples, then processAssays() filters genes based on criteria such as minimum counts and minimum number of samples. 
 
 **Input:** SingleCellExperiment files for each condition. 
 It saves two files:
