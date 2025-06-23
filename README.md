@@ -1,4 +1,6 @@
 # Impact-of-age-on-immune-response-dynamics-upon-pathogen-exposure
+This work aims to uncover the age effect on the immune response when there is an exposition to external stimuli. We study both compositional and transcriptional changes in a context of pathogen challenge at different ages. Together, our results demonstrate the importance of incorporating age as a critical variable in immunological studies and in the design of more
+effective, tailored therapeutic and vaccination strategies.
 
 ### Cell Type Composition Changes - Figures
 
@@ -63,7 +65,7 @@ This script runs gene-wise linear mixed models (LMMs) to test for associations b
      - `nearZeroVar`: report on low-variance predictors.
 
 ### Response-DEA
-**Script:** 'Response_DEA/log_ratio_response.R'
+**Script:** `Response_DEA/log_ratio_response.R`
 This script calculates the log ratio between two conditions and fits a linear effects model. 
 
 **Input:** 
