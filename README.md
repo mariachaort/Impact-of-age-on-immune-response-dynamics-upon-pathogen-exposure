@@ -5,14 +5,12 @@
 This script generates figures showing how cell type composition varies across different stimulation conditions, time points, and chemistries.
 
 **Input:** Preprocessed metadata and cell composition `.rds` files.
+
 **Workflow:**  
   1. Loads metadata to order cell types for plotting.  
   2. Defines experimental parameters and filters valid condition combinations.  
   3. Reads cell composition data for each condition, combining into one dataset.  
   4. Uses `ggplot2` to create faceted plots highlighting significant composition changes (p < 0.05).  
-  5. Saves plots as PDFs.
-
-**Packages:** `ggplot2`, `dplyr`, `RColorBrewer`, `ggpubr`, `ggrepel`, and others.
 
 ---
 ### Age-DEA
@@ -46,11 +44,11 @@ system.time(pb <- aggregateToPseudoBulk(sce,
                                         min.prop=opt$min_prop))
 ```
 ### Step 2: Linear mixed effects model
-**Script:** `Age-DEA/pseudobulk_inrt_lmer.R`
+**Script:** `Age_DEA/pseudobulk_inrt_lmer.R`
 This script runs gene-wise linear mixed models (LMMs) to test for associations between gene expression and a phenotype (e.g., age) using pseudobulked single-cell data.
 
 **Input:**
-- `*_pb.Rds`: Pseudobulk expression matrix (`SummarizedExperiment`), generated using `aggregateToPseudobulk()`.
+- `*_pb.Rds`: Pseudobulk expression matrix generated using `aggregateToPseudobulk()`.
 - `*_dea_vp_topTable.rds`: Output from `dreamlet::dreamlet()`, containing the processed assay object with filtering info (via `processAssays()`).
 
 **Workflow:**  
@@ -64,4 +62,18 @@ This script runs gene-wise linear mixed models (LMMs) to test for associations b
      - `model`: tidy output of LMM fit.  
      - `nearZeroVar`: report on low-variance predictors.
 
+### Response-DEA
+**Script:** 'Response_DEA/log_ratio_response.R'
+This script calculates the log ratio between two conditions and fits a linear effects model. 
+
+**Input:** 
+- `*_pb.Rds`: Gene expression values in pseudobulk format. 
+- Sample_metadata (data frame): Metadata including condition labels and covariates for each sample.
+- Condition_levels (vector of two strings): The two conditions to compare (e.g., c("treated", "control")).
+
+**Workflow:**  
+1. Subset the pseudobulk matrix and sample_metadata to include only samples from the two specified conditions.
+2. Calculate the log2 ratio of expression values between the two conditions for each gene.
+3. Construct a linear model (e.g., lm(log_ratio ~ covariate1 + covariate2, data = ...)) using the log ratios as response variables.
+4. Fit the model and extract relevant statistics (e.g., coefficients, p-values, adjusted p-values) for downstream interpretation.
 
