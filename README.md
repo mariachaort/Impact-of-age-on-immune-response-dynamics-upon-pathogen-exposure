@@ -44,7 +44,7 @@ system.time(pb <- aggregateToPseudoBulk(sce,
                                         min.count = 5,
                                         min.samples = 4,
                                         min.prop=opt$min_prop))
-```r
+```
 ### Step 2: Linear mixed effects model
 **Script:** `Age-DEA/pseudobulk_inrt_lmer.R`
 This script runs gene-wise linear mixed models (LMMs) to test for associations between gene expression and a phenotype (e.g., age) using pseudobulked single-cell data.
