@@ -1,4 +1,4 @@
-# Impact-of-age-on-immune-response-dynamics-upon-pathogen-exposure
+# Impact of age on immune response dynamics upon pathogen stimulation at single-cell resolution
 This work aims to uncover the age effect on the immune response when there is an exposition to external stimuli. We study both compositional and transcriptional changes in a context of pathogen challenge at different ages. Together, our results demonstrate the importance of incorporating age as a critical variable in immunological studies and in the design of more
 effective, tailored therapeutic and vaccination strategies.
 
